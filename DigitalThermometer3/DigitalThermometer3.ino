@@ -5,18 +5,13 @@
 
 // 温度湿度センサの設定
 #include "DHT.h"
-#define DATA_PIN 2 // DHT11のデータPinを2に設定
-DHT dht(DATA_PIN, DHT11); // 今回使用するセンサをDHT11に設定
+const int dataPin = 2; // DHT11のデータPinを2に設定
+DHT dht(dataPin, DHT11); // 今回使用するセンサをDHT11に設定
 
 // LCDの設定
 #include "LiquidCrystal.h"
-#define RS_PIN 4
-#define E_PIN 6
-#define D4_PIN 10
-#define D5_PIN 11
-#define D6_PIN 12
-#define D7_PIN 13
-LiquidCrystal lcd(RS_PIN, E_PIN, D4_PIN, D5_PIN, D6_PIN, D7_PIN);
+const int rsPin = 4, ePin = 6, d4Pin = 10, d5Pin = 11, d6Pin = 12, d7Pin = 13;
+LiquidCrystal lcd(rsPin, ePin, d4Pin, d5Pin, d6Pin, d7Pin); // lcdの設定
 
 void setup() {
   dht.begin(); // dhtセンサの測定を開始する
