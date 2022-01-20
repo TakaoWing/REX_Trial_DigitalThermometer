@@ -19,24 +19,15 @@ void loop() {
 
   // どちらかが取得できない場合
   if (isnan(humid) || isnan(temp)) {
-    Serial.println("Failed...");
+    Serial.println("ERROR");
     return; // 最初からやり直し
   }
 
-  char humidFloatString[10];
-  char tempFloatString[10];
+  Serial.print("温度：");
+  Serial.print(temp);
+  Serial.print("[°C]");
 
-  dtostrf(humid, 4, 2, humidFloatString);
-  dtostrf(temp, 4, 2, tempFloatString);
-
-
-  char bufHumid[20];
-  char bufTemp[20];
-
-  sprintf(bufHumid, "Humidity: %s", humidFloatString);
-  sprintf(bufTemp, "Temperature: %s", tempFloatString);
-
-  Serial.println(bufHumid);
-  Serial.println(bufTemp);
-
+  Serial.print(" 湿度：");
+  Serial.print(humid);
+  Serial.println("[%]");
 }
