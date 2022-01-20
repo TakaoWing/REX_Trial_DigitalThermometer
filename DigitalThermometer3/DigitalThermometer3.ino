@@ -2,15 +2,23 @@
    内容
    LCDに温度と湿度を表示
 */
+
+// 温度湿度センサの設定
 #include "DHT.h"
-#include "LiquidCrystal.h"
 #define DATA_PIN 2 // DHT11のデータPinを2に設定
 DHT dht(DATA_PIN, DHT11); // 今回使用するセンサをDHT11に設定
-LiquidCrystal lcd(4, 6, 10, 11, 12, 13);
-const int ledPin = 6;
+
+// LCDの設定
+#include "LiquidCrystal.h"
+#define RS_PIN 4
+#define E_PIN 6
+#define D4_PIN 10
+#define D5_PIN 11
+#define D6_PIN 12
+#define D7_PIN 13
+LiquidCrystal lcd(RS_PIN, E_PIN, D4_PIN, D5_PIN, D6_PIN, D7_PIN);
+
 void setup() {
-  pinMode(ledPin, OUTPUT);
-  Serial.begin(9600);
   dht.begin(); // dhtセンサの測定を開始する
   lcd.begin( 16, 2 ); // LCDのサイズを入れる．今回のLCDは横に16文字と縦に2列のため
 }
@@ -27,7 +35,7 @@ void loop() {
     return; // 最初からやり直し
   }
 
-  lcd.clear();
+  lcd.clear(); // 画面をクリアにする←この処理がないと文字が重なってしまう
   lcd.setCursor(0, 0);// 1行目にカーソルを合わせる
   lcd.print("Temp :");
   lcd.print(temp);
