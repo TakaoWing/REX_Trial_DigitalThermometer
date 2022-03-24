@@ -3,7 +3,8 @@
    温度と湿度をシリアルモニタに表示する
 */
 #include "DHT.h"
-#define DATA_PIN 2 // DHT11のデータPinを2に設定
+const int dataPin = 2; // DHT11のデータPinを2に設定
+DHT dht(dataPin, DHT11); // 今回使用するセンサをDHT11に設定
 
 DHT dht(DATA_PIN, DHT11); // 今回使用するセンサをDHT11に設定
 void setup() {
