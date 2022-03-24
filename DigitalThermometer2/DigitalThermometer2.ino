@@ -2,9 +2,11 @@
    内容
    温度が一定以上になるとLEDが点灯する
 */
+
+// 温度湿度センサの設定
 #include "DHT.h"
-#define DATA_PIN 2 // DHT11のデータPinを2に設定
-DHT dht(DATA_PIN, DHT11); // 今回使用するセンサをDHT11に設定
+const int dataPin = 2; // DHT11のデータPinを2に設定
+DHT dht(dataPin, DHT11); // 今回使用するセンサをDHT11に設定
 
 const int ledPin = 6;
 void setup() {
