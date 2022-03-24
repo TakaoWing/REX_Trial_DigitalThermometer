@@ -6,7 +6,6 @@
 const int dataPin = 2; // DHT11のデータPinを2に設定
 DHT dht(dataPin, DHT11); // 今回使用するセンサをDHT11に設定
 
-DHT dht(DATA_PIN, DHT11); // 今回使用するセンサをDHT11に設定
 void setup() {
   Serial.begin(9600);
   dht.begin(); // dhtセンサの測定を開始する
